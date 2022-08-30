@@ -123,10 +123,13 @@ def buy():
                 total = 'null'
             # if first time, insert information for total stock count
             if total == 'null':
-                db.execute("INSERT INTO history (total, user, stock, value, company, price) VALUES (?, ?, ?, ?, ?, ?)", int(shares), id, request.form.get("symbol").lower(), shares*price, stock["name"], price)
+                db.execute("INSERT INTO history (total, user, stock, value, company, price) VALUES (?, ?, ?, ?, ?, ?)", int(shares), id, 
+                request.form.get("symbol").lower(), shares*price, stock["name"], price)
             # otherwise just update the existing total count with old total count + new shares bought
             else:
-                db.execute("UPDATE history SET total = ?, value = ? WHERE user = ? and stock = ? and time is NULL", int(total) + int(shares), (int(total) + int(shares)) * price, id, request.form.get("symbol").lower())
+                db.execute("UPDATE history SET total = ?, value = ? WHERE user = ? and stock = ? and time is NULL", int(total) + int(shares),
+                (int(total) + int(shares)) * price, id, request.form.get("symbol").lower())
+                
             db.execute("UPDATE users SET cash = ? WHERE id = ?", amount - price*shares, id)
        # after purchase take user back to portfolio
        return redirect("/")
