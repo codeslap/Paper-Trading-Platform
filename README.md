@@ -4,7 +4,7 @@ This web application let's you do just that by allowing you to buy/sell stocks u
 
 To register for a free API key, use IEX:
 
-Visit iexcloud.io/cloud-login#/register/
+Visit https://iexcloud.io/cloud-login#/register/
 
 Select the “Individual” account type, then enter your name, email address, and a password, and click “Create account”.
 
