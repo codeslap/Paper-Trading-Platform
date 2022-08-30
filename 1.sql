@@ -1,0 +1,1 @@
+SELECT * FROM history WHERE user = 1 and time IS NOT NULL Order by time;

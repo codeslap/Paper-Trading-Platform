@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Symbol</th>
+                <th scope="col">Shares</th>
+                <th scope="col">Price</th>
+                <th scope="col">Transacted</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for item in info %}
+              <tr>
+                <td scope="row">{{ item.stock | upper}}</td>
+                {% if item.sold == None %}
+                <td>{{item.bought}}</td>
+                {% endif %}
+                {% if item.bought == None %}
+                <td>{{item.sold}}</td>
+                {% endif %}
+                <td>{{item.price}}</td>
+                <td>{{item.time}}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+{% endblock %}

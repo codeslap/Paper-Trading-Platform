@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Symbol</th>
+                <th scope="col">Name</th>
+                <th scope="col">Shares</th>
+                <th scope="col">Price</th>
+                <th scope="col">TOTAL</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for item in info %}
+              <tr>
+                <td scope="row">{{ item.stock | upper}}</td>
+                <td>{{item.company}}</td>
+                <td>{{item.total}}</td>
+                <td>{{item.price | usd}}</td>
+                <td>{{item.value | usd}}</td>
+              </tr>
+            {% endfor %}
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <th>Cash</th>
+                <td>{{amount | usd}}</td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <th>Total</th>
+                <td>{{stocktotal | usd}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <table>
+          {% for i in range(0, leni) %}
+          <tr>
+
+          </tr>
+          {% endfor %}
+        </table>
+{% endblock %}

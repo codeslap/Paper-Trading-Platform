@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sell
+{% endblock %}
+{% block main %}
+    <form action="/sell" method="post">
+        <div class="mb-3">
+            <select class="form-select" id="symbol" name = "symbol" aria-label="Default select example">
+                <option selected>Symbol</option>
+                {% for i in range(0,leni) %}
+                <option>{{info[i]["stock"] | upper}}</option>
+                {% endfor %}
+              </select>
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" id="shares" name="shares" placeholder="Shares" type="number">
+        </div>
+        <button class="btn btn-primary" type="submit">Sell</button>
+        <p>Current Date and Time is <span id="date-time" name="date-time"></span>.</p>
+    </form>
+    <script>
+        var dt = new Date();
+        document.getElementById("date-time").innerHTML=dt;
+    </script>
+{% endblock %}
